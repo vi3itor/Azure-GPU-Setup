@@ -13,21 +13,21 @@ fi
 cd $SETUP_DIR
 
 # install cudnn
-if [ ! -f "cudnn-8.0-linux-x64-v5.1.tgz" ]; then
-    echo "You need to download cudnn-8.0 manually this can be downloaded from https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v5.1/prod_20161129/8.0/cudnn-8.0-linux-x64-v5.1-tgz you will need to create a NVIDIA Account! Specifically, place it at: $SETUP_DIR/cudnn-8.0-linux-x64-v5.1.tgz"
+if [ ! -f "cudnn-10.0-linux-x64-v7.4.1.5.tgz" ]; then
+    echo "You need to download cudnn-8.0 manually this can be downloaded from https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.4.1.5/prod/10.0_20181108/cudnn-10.0-linux-x64-v7.4.1.5.tgz you will need to create a NVIDIA Account! Specifically, place it at: $SETUP_DIR/cudnn-8.0-linux-x64-v5.1.tgz"
     exit
 fi
 
 echo "Installing CUDA toolkit and samples"
 # install cuda toolkit
-if [ ! -f "cuda_8.0.61_375.26_linux-run" ]; then
+if [ ! -f "cuda_10.0.130_410.48_linux-run" ]; then
 	echo "CUDA installation file not found. Did you run part 1?"
 	exit
 fi
-sudo sh cuda_8.0.61_375.26_linux-run --silent --verbose --driver --toolkit
+sudo sh cuda_10.0.130_410.48_linux-run --silent --verbose --driver --toolkit
 
 echo "Uncompressing cudnn"
-tar xzvf cudnn-8.0-linux-x64-v5.1.tgz
+tar xzvf cudnn-10.0-linux-x64-v7.4.1.5.tgz
 sudo cp -P cuda/include/cudnn.h /usr/local/cuda/include/
 sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64/
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
@@ -55,10 +55,8 @@ sudo apt-get -y install libcupti-dev
 # upgrade pip
 sudo pip install --upgrade pip
 
-# install tensorflow 1.0
-export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.0.1-cp27-none-linux_x86_64.whl
-
-sudo pip install --upgrade $TF_BINARY_URL
+# install latest Tensorflow with gpu support
+sudo pip install tensorflow-gpu
 
 echo "Script done"
 
