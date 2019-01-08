@@ -20,11 +20,11 @@ fi
 
 echo "Installing CUDA toolkit and samples"
 # install cuda toolkit
-if [ ! -f "cuda_10.0.130_410.48_linux-run" ]; then
+if [ ! -f "cuda_10.0.130_410.48_linux.run" ]; then
 	echo "CUDA installation file not found. Did you run part 1?"
 	exit
 fi
-sudo sh cuda_10.0.130_410.48_linux-run --silent --verbose --driver --toolkit
+sudo sh cuda_10.0.130_410.48_linux.run --silent --verbose --driver --toolkit
 
 echo "Uncompressing cudnn"
 tar xzvf cudnn-10.0-linux-x64-v7.4.1.5.tgz
