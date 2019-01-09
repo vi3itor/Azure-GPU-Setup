@@ -13,21 +13,21 @@ fi
 cd $SETUP_DIR
 
 # install cudnn
-if [ ! -f "cudnn-10.0-linux-x64-v7.4.1.5.tgz" ]; then
-    echo "You need to download cudnn-8.0 manually this can be downloaded from https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.4.1.5/prod/10.0_20181108/cudnn-10.0-linux-x64-v7.4.1.5.tgz you will need to create a NVIDIA Account! Specifically, place it at: $SETUP_DIR/cudnn-8.0-linux-x64-v5.1.tgz"
+if [ ! -f "cudnn-9.0-linux-x64-v7.4.2.24.tgz" ]; then
+    echo "You need to download cudnn-9.0 manually this can be downloaded from https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.4.2/prod/9.0_20181213/cudnn-9.0-linux-x64-v7.4.2.24.tgz you will need to create a NVIDIA Account! Specifically, place it at: $SETUP_DIR/cudnn-9.0-linux-x64-v7.4.2.24.tgz"
     exit
 fi
 
 echo "Installing CUDA toolkit and samples"
 # install cuda toolkit
-if [ ! -f "cuda_10.0.130_410.48_linux.run" ]; then
+if [ ! -f "cuda_9.0.176_384.81_linux-run" ]; then
 	echo "CUDA installation file not found. Did you run part 1?"
 	exit
 fi
-sudo sh cuda_10.0.130_410.48_linux.run --silent --verbose --driver --toolkit
+sudo sh cuda_9.0.176_384.81_linux-run --silent --verbose --driver --toolkit
 
 echo "Uncompressing cudnn"
-tar xzvf cudnn-10.0-linux-x64-v7.4.1.5.tgz
+tar xzvf cudnn-9.0-linux-x64-v7.4.2.24.tgz
 sudo cp -P cuda/include/cudnn.h /usr/local/cuda/include/
 sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64/
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
