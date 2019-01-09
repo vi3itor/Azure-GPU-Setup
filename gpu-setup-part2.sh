@@ -53,10 +53,10 @@ fi
 sudo apt-get -y install libcupti-dev
 
 # upgrade pip
-sudo pip install --upgrade pip
+sudo pip3 install --upgrade pip3
 
 # install latest Tensorflow with gpu support
-sudo pip install tensorflow-gpu
+sudo pip3 install tensorflow-gpu
 
 echo "Script done"
 
